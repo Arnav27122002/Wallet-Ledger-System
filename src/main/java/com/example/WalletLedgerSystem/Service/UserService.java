@@ -53,13 +53,14 @@ public class UserService {
 
         List<Wallet> wallets = new ArrayList<>();
         for (defaultWallet walletType : defaultWallet.values()) {
-            if(savedUser.isPrimary()==true)
-            {
-
-            }
             Wallet wallet = new Wallet();
+            if(walletType==defaultWallet.ASSET)
+            {
+                wallet.setIsSubWallet("yes");
+            }
+            else
+            {wallet.setIsSubWallet("no");}
             wallet.setWalletName(walletType.name());
-            wallet.setIsSubWallet("no");
             wallet.setUser(savedUser);
             wallets.add(wallet);
         }
